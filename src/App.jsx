@@ -10,7 +10,6 @@ function App() {
     return response.json();
   };
 
-
   useEffect(() => {
     fetchUsers().then((users) => {
       console.log(
@@ -39,16 +38,32 @@ function App() {
       {users.length > 0 ? (
         <div className='container'>
           {users.map((user, index) => (
-            <div key={user.id} className="user">
-              <img src={`https://dummyimage.com/200x200/024983/ffffff&text=${user.website}`} alt="" className='image'/>
+            <div key={user.id} className='user'>
+              <img
+                src={`https://dummyimage.com/200x200/024983/ffffff&text=${user.website}`}
+                alt=''
+                className='image'
+              />
               <h4 className='username'>{`${index + 1}. ${user.username}`}</h4>
-              <ul className='info'>
-                <li>user: <span>{user.name}</span></li>
-                <li>Email: <span>{user.email}</span> </li>
-                <li>Company: <span>{user.company.name}</span></li>
-                <li>City: <span>{user.address.city}</span></li>
-              </ul>
-              </div>
+              <table>
+                <tr>
+                  <td className='info-property'>User:</td>
+                  <td className="info-value">{user.name}</td>
+                </tr>
+                <tr>
+                  <td className='info-property'>Email:</td>
+                  <td className="info-value">{user.email}</td>
+                </tr>
+                <tr>
+                  <td className='info-property'>Company:</td>
+                  <td className="info-value">{user.company.name}</td>
+                </tr>
+                <tr>
+                  <td className='info-property'>City:</td>
+                  <td className="info-value">{user.address.city}</td>
+                </tr>
+              </table>
+            </div>
           ))}
         </div>
       ) : (
