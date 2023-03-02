@@ -10,27 +10,27 @@ function App() {
     return response.json();
   };
 
-  console.log(
-    users.map((user) => {
-      return {
-        name: user.name,
-        username: user.username,
-        email: user.email,
-        city: user.address.city,
-        address: {
-          city: user.address.city,
-        },
-        website: user.website,
-        company: {
-          name: user.company.name,
-        },
-      };
-    })
-  );
 
   useEffect(() => {
-    fetchUsers().then((res) => {
-      setUsers(res);
+    fetchUsers().then((users) => {
+      console.log(
+        users.map((user) => {
+          return {
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            city: user.address.city,
+            address: {
+              city: user.address.city,
+            },
+            website: user.website,
+            company: {
+              name: user.company.name,
+            },
+          };
+        })
+      );
+      setUsers(users);
     });
   }, []);
 
